@@ -214,6 +214,7 @@ export interface ITerminalConfiguration {
 		fallbackLigatures: string[];
 	};
 	hideOnLastClosed: boolean;
+	defaultFloating: boolean;
 }
 
 export interface ITerminalFont {

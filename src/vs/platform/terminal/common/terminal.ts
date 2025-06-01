@@ -105,6 +105,7 @@ export const enum TerminalSettingId {
 	HideOnStartup = 'terminal.integrated.hideOnStartup',
 	HideOnLastClosed = 'terminal.integrated.hideOnLastClosed',
 	CustomGlyphs = 'terminal.integrated.customGlyphs',
+	DefaultFloating = 'terminal.integrated.defaultFloating',
 	RescaleOverlappingGlyphs = 'terminal.integrated.rescaleOverlappingGlyphs',
 	PersistentSessionScrollback = 'terminal.integrated.persistentSessionScrollback',
 	InheritEnv = 'terminal.integrated.inheritEnv',

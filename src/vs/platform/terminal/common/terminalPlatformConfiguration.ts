@@ -367,7 +367,13 @@ const terminalPlatformConfiguration: IConfigurationNode = {
 				'bash',
 				'zsh',
 			]
-		}
+		},
+		[TerminalSettingId.DefaultFloating]: {
+			scope: ConfigurationScope.APPLICATION,
+			description: localize('terminal.integrated.defaultFloating', "Controls whether new terminal instances should open as floating windows by default."),
+			type: 'boolean',
+			default: false
+		},
 	}
 };
 

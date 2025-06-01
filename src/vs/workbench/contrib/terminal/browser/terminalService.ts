@@ -1017,10 +1017,19 @@ export class TerminalService extends Disposable implements ITerminalService {
 		const location = await this.resolveLocation(options?.location) || this.defaultLocation;
 		const parent = await this._getSplitParent(options?.location);
 		this._terminalHasBeenCreated.set(true);
+		let instance: ITerminalInstance;
 		if (parent) {
-			return this._splitTerminal(shellLaunchConfig, location, parent);
+			instance = this._splitTerminal(shellLaunchConfig, location, parent);
+		} else {
+			instance = this._createTerminal(shellLaunchConfig, location, options);
 		}
-		return this._createTerminal(shellLaunchConfig, location, options);
+
+		if (this._terminalConfigurationService.config.defaultFloating && !shellLaunchConfig.hideFromUser) {
+			await instance.focusWhenReady();
+			this.moveIntoNewEditor(instance);
+		}
+
+		return instance;
 	}
 
 	private async _getContributedProfile(shellLaunchConfig: IShellLaunchConfig, options?: ICreateTerminalOptions): Promise<IExtensionTerminalProfile | undefined> {
